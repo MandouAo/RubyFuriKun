@@ -289,7 +289,6 @@ class Application:
 
     def RubyUser(self):  # ユーザー辞書に登録された文字にルビを振る。置換。
         self.UserJisyoYomikomi()
-        self.User_list = []
         for self.UTango in self.Userjisyo:
             self.UHbun = (
                 self.RubyMae[self.Sentaku]
@@ -452,7 +451,7 @@ class Application:
                     elif self.Motomoji == "》" and self.Tcheck == 2:
                         self.Tcheck = 0
                         self.TashiTan = self.Motomoji
-                    elif not self.token.tag_ == "空白":
+                    elif not self.token.tag_ == "空白" and self.Tcheck == 0:
                         self.Yomimoji = jaconv.kata2hira(
                             self.token.morph.get("Reading")[0]
                         )
@@ -555,13 +554,9 @@ class Application:
 
     def Hutsu2HTML(self):
         self.SyoriHonbun = self.SyoriHonbun.replace("\n", "<br>\n")
-        self.SyoriHonbun = self.SyoriHonbun.replace(" ", "&nbsp;")
-        self.SyoriHonbun = self.SyoriHonbun.replace("　", "&emsp;")
 
     def HTML2Hutsu(self):
         self.SyoriHonbun = self.SyoriHonbun.replace("<br>\n", "\n")
-        self.SyoriHonbun = self.SyoriHonbun.replace("&nbsp;", " ")
-        self.SyoriHonbun = self.SyoriHonbun.replace("&emsp;", "　")
 
     def HyoujiKakunin(self):  # 表示確認ボタンを押された時
         self.SyoriHonbun = ""
