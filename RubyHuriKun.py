@@ -512,7 +512,7 @@ class Application:
                         self.TashiTan = tyuukan
                     else:
                         self.TashiTan = self.Motomoji
-                    self.SyoriSouHonbun += self.TashiTan
+                    self.SyoriSouHonbun += self.TashiTan + self.token.whitespace_
             self.SyoriList.append(self.SyoriSouHonbun)
             self.progbar.configure(value=(i) / len(self.TyuukanHonbun))
             self.progbar.update()
